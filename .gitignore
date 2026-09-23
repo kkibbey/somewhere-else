@@ -1,0 +1,13 @@
+# Godot generated files
+.godot/
+
+# Godot 3.x imports
+.import/
+
+# Builds / exports
+build/
+exports/
+
+# OS junk
+.DS_Store
+Thumbs.db
