@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bri7kaghtyb64"]
+
+[ext_resource type="PackedScene" uid="uid://biargdx6db31f" path="res://characters/wizard.tscn" id="1_f3sb7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_seaco"]
+diffuse_mode = 1
+albedo_color = Color(0.5372549, 0.6509804, 0.40392157, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rm7dq"]
+material = SubResource("StandardMaterial3D_seaco")
+top_radius = 8.0
+bottom_radius = 5.5
+radial_segments = 8
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1cij"]
+albedo_color = Color(0.8039216, 0.68235296, 0.52156866, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rm7dq"]
+size = Vector2(3, 9)
+
+[sub_resource type="Environment" id="Environment_seaco"]
+background_mode = 1
+background_color = Color(0.4117647, 0.35686275, 0.54509807, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.84705883, 0.80784315, 0.9019608, 1)
+ambient_light_energy = 0.65
+volumetric_fog_albedo = Color(0.4117647, 0.35686275, 0.54509807, 1)
+
+[node name="World" type="Node3D" unique_id=1994755864]
+
+[node name="Island" type="MeshInstance3D" parent="." unique_id=830541517]
+mesh = SubResource("CylinderMesh_rm7dq")
+
+[node name="Path" type="MeshInstance3D" parent="." unique_id=676742270]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 0, 1.01, 0)
+material_override = SubResource("StandardMaterial3D_d1cij")
+mesh = SubResource("PlaneMesh_rm7dq")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1380104546]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 12)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1599348983]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, -30, 0)
+light_energy = 0.7
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1305222197]
+environment = SubResource("Environment_seaco")
+
+[node name="Wizard" parent="." unique_id=2002854353 instance=ExtResource("1_f3sb7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -2.657)
